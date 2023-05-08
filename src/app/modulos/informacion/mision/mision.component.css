@@ -1,0 +1,19 @@
+.card {
+  background-color: #212121;
+}
+
+.card-image img {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-content,
+.card-reveal {
+  color: white;
+}
+
+.section-cards {
+  margin-top: 50px;
+  margin-block-end: 100px;
+}

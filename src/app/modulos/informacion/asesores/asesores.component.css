@@ -1,0 +1,18 @@
+body {
+    background-color: #222;
+    color: #fff;
+}
+.card {
+    background-color: #333;
+    color: #fff;
+    margin: 20px;
+    margin-top: 50px;
+    margin-block-end: 90px;
+  
+}
+.img-container {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,57 @@
+nav {
+  background-color: #263238;
+}
+
+nav a {
+  color: #fff !important;
+}
+
+.sidenav {
+  background-color: #263238;
+}
+
+.sidenav a {
+  color: #fff !important;
+}
+
+from {
+  width: 0;
+}
+to {
+  width: 100%;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animated-text {
+  font-size: 32px;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  animation-name: typing;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 2s; /* Agregamos una pausa de 2 segundos antes de iniciar la animación */
+}
+
+.brand-logo strong {
+  color: #e65100;
+}
+
+
+.brand-logo {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.brand-logo strong {
+  color: #e65100;
+}

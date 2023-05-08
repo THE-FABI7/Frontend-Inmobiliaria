@@ -1,0 +1,19 @@
+.sidenav {
+    background-color: #263238;
+  }
+  
+  .sidenav-trigger i {
+    color: black;
+  }
+  
+  .user-view .background {
+    background-color: #263238;
+  }
+  
+  .user-view img.circle {
+    border: 2px solid #fff;
+  }
+  
+  .white-text, .white-text a {
+    color: #fff !important;
+  }
