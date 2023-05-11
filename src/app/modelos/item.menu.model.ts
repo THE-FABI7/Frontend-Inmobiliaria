@@ -1,4 +1,4 @@
-export class itenMenuModel {
+export class itemMenuModel {
   idMenu?: string;
   ruta?: string;
   texto?: string;

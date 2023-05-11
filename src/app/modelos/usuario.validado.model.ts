@@ -4,5 +4,5 @@ import { usuarioModel } from './usuario.model';
 export class usuarioValidadoModel {
   user?: usuarioModel;
   token?: string = "";
-  // menu: permisosModel[] = []
+  menu: permisosModel[] = []
 }
