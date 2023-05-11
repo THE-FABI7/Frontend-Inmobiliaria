@@ -5,8 +5,9 @@ import { usuarioModel } from '../modelos/usuario.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { usuarioValidadoModel } from '../modelos/usuario.validado.model';
 import { permisosModel } from '../modelos/permisos.model';
-import { itenMenuModel } from '../modelos/item.menu.model';
+import { itemMenuModel } from '../modelos/item.menu.model';
 import { configuracionRutasMenuLateral } from '../config/configuracion.menu.lateral';
+import { contactoModel } from '../modelos/contacto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,25 @@ export class SeguridadService {
       correo: usuario,
       clave: clave,
     });
+  }
+
+  EnviarMensaje(
+    nombreCompleto: string,
+    correo: string,
+    celular: string,
+    tipoMensaje: string,
+    mensaje: string
+  ): Observable<contactoModel> {
+    return this.http.post<contactoModel>(
+      `${this.urlBase}enviar-mensaje-formulario-contacto`,
+      {
+        nombreCompleto: nombreCompleto,
+        correo: correo,
+        celular: celular,
+        tipoMensaje: tipoMensaje,
+        mensaje: mensaje,
+      }
+    );
   }
 
   /**
@@ -75,7 +95,7 @@ export class SeguridadService {
     if (datosSesion) {
       localStorage.removeItem('datos-sesion');
     }
-
+    localStorage.removeItem('menu-lateral');
     this.ActualizarComportamientoDeUsuario(new usuarioValidadoModel());
   }
 
@@ -189,12 +209,14 @@ export class SeguridadService {
    * Esta función verifica si hay datos de sesión almacenados en el almacenamiento local y actualiza el
    * comportamiento del usuario en consecuencia.
    */
-  ValidaCionDeSesion() {
+  ValidaCionDeSesion(): usuarioValidadoModel | null {
     let ls = localStorage.getItem('datos-sesion');
     if (ls) {
       let objUsuario = JSON.parse(ls);
       this.ActualizarComportamientoDeUsuario(objUsuario);
+      return objUsuario;
     }
+    return null;
   }
   /**
    * Esta función actualiza el comportamiento de un usuario validado con nuevos datos.
@@ -210,15 +232,15 @@ export class SeguridadService {
     return this.datosUsuarioValidado.next(datos);
   }
 
-  ConstruirMenuLateral(permisos: permisosModel[]): itenMenuModel[] {
-    let menu: itenMenuModel[] = [];
+  ConstruirMenuLateral(permisos: permisosModel[]) {
+    let menu: itemMenuModel[] = [];
     permisos.forEach((permiso) => {
       let datosRuta = configuracionRutasMenuLateral.ListaMenus.filter(
         (x) => x.id == permiso.menuId
       );
 
       if (datosRuta.length > 0) {
-        let item = new itenMenuModel();
+        let item = new itemMenuModel();
         item.idMenu = permiso.menuId;
         item.ruta = datosRuta[0].ruta;
         item.icono = datosRuta[0].icono;
@@ -226,6 +248,28 @@ export class SeguridadService {
         menu.push(item);
       }
     });
+    this.AlmacenarItemsMenuLateral(menu);
+  }
+
+  /**
+   *
+   * @param itemsMenu items del menu a guardar en el ls
+   */
+  AlmacenarItemsMenuLateral(itemsMenu: itemMenuModel[]) {
+    let menustr = JSON.stringify(itemsMenu);
+    localStorage.setItem('menu-lateral', menustr);
+  }
+
+  /**
+   *
+   * @returns lista con items del menu
+   */
+  ObtenerItemsMenuLateral(): itemMenuModel[] {
+    let menu: itemMenuModel[] = [];
+    let menustr = localStorage.getItem('menu-lateral');
+    if (menustr) {
+      menu = JSON.parse(menustr);
+    }
     return menu;
   }
 }
