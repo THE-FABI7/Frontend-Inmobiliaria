@@ -10,7 +10,7 @@ const routes: Routes = [
     component: MisionComponent,
   },
   {
-    path: 'vision',
+    path: 'contacto',
     component: VisionComponent,
   },
   {
