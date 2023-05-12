@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { usuarioValidadoModel } from 'src/app/modelos/usuario.validado.model';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
 @Component({
@@ -43,10 +44,16 @@ export class IdentificacionTwofaComponent {
       this.servicioSeguridad
         .validarCodigo2FA(this.userId, codigo2fa)
         .subscribe({
-          next: (data: Object) => {
+          next: (data: usuarioValidadoModel) => {
             console.log(data);
-            this.servicioSeguridad.AlmacenarDatosUsuarioValidado(data);
-            this.router.navigate([""])
+            if(data.token!=null && data.token !=undefined && data.token!=""){
+
+              this.servicioSeguridad.ConstruirMenuLateral(data.menu);
+              this.servicioSeguridad.AlmacenarDatosUsuarioValidado(data);
+              this.router.navigate([""])
+            }else{
+              alert("el codigo no es valido")
+            }
           },
           error: (err) => {
             console.log(err);
