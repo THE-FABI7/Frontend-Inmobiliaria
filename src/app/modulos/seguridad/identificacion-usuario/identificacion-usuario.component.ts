@@ -6,6 +6,7 @@ import { MD5 } from 'crypto-js';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-identificacion-usuario',
   templateUrl: './identificacion-usuario.component.html',
@@ -13,15 +14,20 @@ import { Router } from '@angular/router';
 })
 export class IdentificacionUsuarioComponent {
   fGroup: FormGroup = new FormGroup({});
+  sitekey: string = "3TQkmAAAAAOdOC74COMGkhK7PLNxlmQw9cX1F"
 
   constructor(
     private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
-    private router: Router
-  ) {}
+    private router: Router,
+    
+  ) {
+  
+  }
 
   ngOnInit() {
     this.ConstruirFormulario();
+    
   }
 
   ConstruirFormulario() {

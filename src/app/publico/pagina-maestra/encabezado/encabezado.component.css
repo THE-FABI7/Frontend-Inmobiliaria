@@ -30,22 +30,9 @@ to {
   }
 }
 
-.animated-text {
-  font-size: 32px;
-  font-weight: bold;
-  overflow: hidden;
-  white-space: nowrap;
-  animation-name: typing;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  animation-delay: 2s; /* Agregamos una pausa de 2 segundos antes de iniciar la animación */
-}
-
 .brand-logo strong {
   color: #e65100;
 }
-
 
 .brand-logo {
   font-size: 32px;
