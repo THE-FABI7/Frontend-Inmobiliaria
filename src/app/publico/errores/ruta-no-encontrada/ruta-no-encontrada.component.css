@@ -8,12 +8,13 @@ body {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
+  padding-block-end: 10px;
 }
 
 h1 {
   font-size: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 img {
