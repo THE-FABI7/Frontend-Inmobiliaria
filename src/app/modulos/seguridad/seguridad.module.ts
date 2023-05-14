@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SeguridadRoutingModule } from './seguridad-routing.module';
@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroPublicoUsuariosComponent } from './registro-publico-usuarios/registro-publico-usuarios.component';
 import { ValidarHashUsuarioPublicoComponent } from './validar-hash-usuario-publico/validar-hash-usuario-publico.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -34,7 +35,10 @@ import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.
     CommonModule,
     SeguridadRoutingModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SeguridadModule { }

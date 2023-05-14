@@ -19,6 +19,9 @@
         <a  *ngIf="!sesionActiva" routerLink="/informacion/contacto" class="white-text">Contacto</a>
       </li>
       <li>
+        <a  *ngIf="sesionActiva" routerLink="/informacion/contacto" class="white-text">Contacto</a>
+      </li>
+      <li>
         <a  *ngIf="!sesionActiva" routerLink="/informacion/nuestros-asesores" class="white-text">Nuestros acesores</a>
       </li>
       <li>

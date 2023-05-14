@@ -11,6 +11,8 @@ import { ErrorDeServidorComponent } from './publico/errores/error-de-servidor/er
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -25,8 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InicioComponent,
     
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,  BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,  BrowserAnimationsModule, RecaptchaModule, RecaptchaFormsModule],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

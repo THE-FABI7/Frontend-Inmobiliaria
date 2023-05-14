@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-identificacion-usuario',
   templateUrl: './identificacion-usuario.component.html',
@@ -14,7 +15,8 @@ import { Router } from '@angular/router';
 })
 export class IdentificacionUsuarioComponent {
   fGroup: FormGroup = new FormGroup({});
-  sitekey: string = "3TQkmAAAAAOdOC74COMGkhK7PLNxlmQw9cX1F"
+  captcha: string ;
+  email: string;
 
   constructor(
     private fb: FormBuilder,
@@ -22,11 +24,13 @@ export class IdentificacionUsuarioComponent {
     private router: Router,
     
   ) {
-  
+    this.captcha = '';
+    this.email = '';
   }
 
   ngOnInit() {
     this.ConstruirFormulario();
+
     
   }
 
@@ -34,6 +38,7 @@ export class IdentificacionUsuarioComponent {
     this.fGroup = this.fb.group({
       usuario: ['', [Validators.required, Validators.email]],
       clave: ['', [Validators.required]],
+      recaptcha: ['', [Validators.required]],
     });
   }
 
@@ -72,5 +77,11 @@ export class IdentificacionUsuarioComponent {
 
   get obtenerFormGroup() {
     return this.fGroup.controls;
+  }
+
+  resolver(captchaResponse: string) {
+    this.captcha = captchaResponse
+    console.log("captcha with response: " + JSON.stringify(this.captcha))
+
   }
 }

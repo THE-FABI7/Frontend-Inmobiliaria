@@ -39,9 +39,19 @@
           </div>
         </div>
       </div>
-    
       
-       
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="recaptcha" class="required">Por favor, complete la verificación de seguridad.</label>
+          <br>  
+          <br>
+          <re-captcha formControlName="recaptcha" (resolved)="resolver($event)" siteKey="6Lf9wgkmAAAAALHM33koiYOLwiWtz7eBpQq_qHcY"></re-captcha>
+        </div>
+      <div>
+        <p>{{email}}</p>
+      </div>
+      </div>
+      
       <div class="row">
         <div class="input-field col s12">
           <button
