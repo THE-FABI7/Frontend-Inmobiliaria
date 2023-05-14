@@ -1,2 +1,25 @@
-<h5 *ngIf="!validado">validando......</h5>
-<h1 *ngIf="validado" > validado correctamente</h1>
+<!-- <h5 *ngIf="!validado">validando......</h5>
+<h1 *ngIf="validado" > validado correctamente</h1> -->
+<div class="center container">
+    <h5 *ngIf="!validado" class="preloader-text">
+        <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        Validando...
+      </h5>
+      
+      <h1 *ngIf="validado" class="valid-text">
+        <i class="material-icons">done</i>
+        Validado correctamente
+      </h1>
+</div>
+
+  
