@@ -5,9 +5,6 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { MD5 } from 'crypto-js';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-identificacion-usuario',
   templateUrl: './identificacion-usuario.component.html',
@@ -15,14 +12,13 @@ import { Router } from '@angular/router';
 })
 export class IdentificacionUsuarioComponent {
   fGroup: FormGroup = new FormGroup({});
-  captcha: string ;
+  captcha: string;
   email: string;
 
   constructor(
     private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
-    private router: Router,
-    
+    private router: Router
   ) {
     this.captcha = '';
     this.email = '';
@@ -30,8 +26,6 @@ export class IdentificacionUsuarioComponent {
 
   ngOnInit() {
     this.ConstruirFormulario();
-
-    
   }
 
   ConstruirFormulario() {
@@ -46,7 +40,6 @@ export class IdentificacionUsuarioComponent {
     if (this.fGroup.invalid) {
       alert('Datos incompletos');
     } else {
-    
       let usuario = this.obtenerFormGroup['usuario'].value;
       let clave = this.obtenerFormGroup['clave'].value;
       let claveCifrada = MD5(clave).toString();
@@ -80,8 +73,7 @@ export class IdentificacionUsuarioComponent {
   }
 
   resolver(captchaResponse: string) {
-    this.captcha = captchaResponse
-    console.log("captcha with response: " + JSON.stringify(this.captcha))
-
+    this.captcha = captchaResponse;
+    console.log('captcha with response: ' + JSON.stringify(this.captcha));
   }
 }

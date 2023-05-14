@@ -1,38 +1,59 @@
 <div class="container">
-
   <div class="col s12 z-depth-6 card-panel">
     <form [formGroup]="fGroup" class="login-form">
       <div class="input-field">
-        <input id="nombre" type="text" class="validate" required />
-        <label for="nombre">Nombre completo *</label>
+        <input formControlName="nombreCompleto" id="nombreCompleto" type="text" class="validate" required />
+        <label for="nombreCompleto">Nombre completo *</label>
       </div>
-  
+
       <div class="input-field">
-        <input id="correo" type="email" class="validate" required />
+        <input
+          formControlName="correo"
+          id="correo"
+          type="email"
+          class="validate"
+          required
+        />
         <label for="correo">Correo electrónico *</label>
       </div>
-  
+
       <div class="input-field">
-        <input id="celular" type="tel" class="validate" />
+        <input
+          formControlName="celular"
+          id="celular"
+          type="tel"
+          class="validate"
+        />
         <label for="celular">Celular</label>
       </div>
-  
+
       <div class="input-field">
         <textarea
+          formControlName="tipoMensaje"
           id="tipoMensaje"
           class="materialize-textarea"
           required
         ></textarea>
         <label for="tipoMensaje">tipoMensaje *</label>
       </div>
-  
+
       <div class="input-field">
-        <textarea id="mensaje" class="materialize-textarea" required></textarea>
+        <textarea
+          formControlName="mensaje"
+          id="mensaje"
+          class="materialize-textarea"
+          required
+        ></textarea>
         <label for="mensaje">Mensaje *</label>
       </div>
-  
-      <button (click)="EnviarMensaje()" class="btn waves-effect waves-light" type="submit">Enviar</button>
+
+      <button
+        (click)="EnviarMensaje()"
+        class="btn waves-effect waves-light"
+        type="button"
+      >
+        Enviar
+      </button>
     </form>
   </div>
-  
 </div>
