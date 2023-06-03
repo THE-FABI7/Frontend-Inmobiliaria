@@ -15,7 +15,6 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +23,7 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
     MenuLateralComponent,
     RutaNoEncontradaComponent,
     ErrorDeServidorComponent,
-    InicioComponent,
+    InicioComponent
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,  BrowserAnimationsModule, RecaptchaModule, RecaptchaFormsModule],

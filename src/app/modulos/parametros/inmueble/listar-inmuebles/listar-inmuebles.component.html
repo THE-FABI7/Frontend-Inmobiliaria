@@ -1,1 +1,52 @@
-<p>listar-inmuebles works!</p>
+<br />
+<a routerLink="/parametros/producto-agregar" class="btn">Agregar Registro</a>
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio de Venta</th>
+      <th>Cantidad Disponible</th>
+      <th>Estado</th>
+      <th>Imagen</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of listaRegistros">
+      <td>{{ r.name }}</td>
+      <td>{{ r.precioVenta }}</td>
+      <td>{{ r.precioAlquiler }}</td>
+      <td>{{ r.type }}</td>
+      <td>
+        <img src="{{ r.foto }}" class="imagenListadoRegistros" />
+      </td>
+      <td>
+        <a
+          routerLink="/parametros/inmueble-editar/{{ r._id }}"
+          class="btn orange"
+          >Editar Registro</a
+        >&nbsp;
+        <a
+          routerLink="/parametros/inmueble-eliminar/{{ r._id }}"
+          class="btn red"
+          >Eliminar Registro</a
+        >
+      </td>
+    </tr>
+    <!--
+      <tr> 
+        <td colspan="5">
+          <pagination-controls
+                      (pageChange)="pag = $event; ListarRegistros()"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente"
+                      screenReaderPaginationLabel="Navegación"
+                      screenReaderPageLabel="Página"
+                      screenReaderCurrentLabel="Página Actual">
+          </pagination-controls>
+        </td>
+        -->
+  </tbody>
+</table>

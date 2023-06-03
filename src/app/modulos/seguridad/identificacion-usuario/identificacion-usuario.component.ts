@@ -53,7 +53,7 @@ export class IdentificacionUsuarioComponent {
                 'Credenciales Incorrectas o falta la validacion del correo electronico'
               );
             } else {
-              console.log(data);
+              //console.log(data);
               if (
                 this.servicioSeguridad.AlmacenarDatosUsuarioIdentificado(data)
               ) {
@@ -74,6 +74,6 @@ export class IdentificacionUsuarioComponent {
 
   resolver(captchaResponse: string) {
     this.captcha = captchaResponse;
-    console.log('captcha with response: ' + JSON.stringify(this.captcha));
+    //console.log('captcha with response: ' + JSON.stringify(this.captcha));
   }
 }

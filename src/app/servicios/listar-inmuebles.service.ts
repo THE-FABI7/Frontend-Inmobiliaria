@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { configuracionRutasBackend } from '../config/configuracion.rutas.backend';
+import { InmuebleModel } from '../modelos/inmueble.model';
+import { ConfiguracionPaginacion } from '../config/configuracion.paginacion';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +16,11 @@ export class ListarInmueblesService {
 
   ObtenerInmuebles() {
     return this.http.get(`${this.urlBase}inmuebles`);
+  }
+
+  listarRegistros(): Observable<InmuebleModel[]> {
+    return this.http.get<InmuebleModel[]>(
+      `${this.urlBase}producto?filter={"limit":${ConfiguracionPaginacion.registrosPorPagina}}`
+    );
   }
 }

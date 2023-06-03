@@ -8,7 +8,8 @@ import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.
 import { ListarInmueblesComponent } from './inmueble/listar-inmuebles/listar-inmuebles.component';
 import { CrearInmueblesComponent } from './inmueble/crear-inmuebles/crear-inmuebles.component';
 import { EditarInmueblesComponent } from './inmueble/editar-inmuebles/editar-inmuebles.component';
-
+import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
+import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,10 @@ import { EditarInmueblesComponent } from './inmueble/editar-inmuebles/editar-inm
     ListarClienteComponent,
     ListarInmueblesComponent,
     CrearInmueblesComponent,
-    EditarInmueblesComponent
+    EditarInmueblesComponent,
+    EliminarInmuebleComponent,
+    CrearClienteComponent,
   ],
-  imports: [
-    CommonModule,
-    ParametrosRoutingModule
-  ]
+  imports: [CommonModule, ParametrosRoutingModule],
 })
-export class ParametrosModule { }
+export class ParametrosModule {}

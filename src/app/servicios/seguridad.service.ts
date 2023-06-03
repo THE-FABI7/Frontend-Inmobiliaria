@@ -69,7 +69,7 @@ export class SeguridadService {
     let cadena = JSON.stringify(datos);
     try {
       let objeto = JSON.parse(cadena) as usuarioModel;
-      console.log(objeto);
+      //console.log(objeto);
     } catch (error) {
       console.log(error);
     }
