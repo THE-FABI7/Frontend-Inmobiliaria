@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfiguracionPaginacion } from 'src/app/config/configuracion.paginacion';
 import { InmuebleModel } from 'src/app/modelos/inmueble.model';
 import { ListarInmueblesService } from 'src/app/servicios/listar-inmuebles.service';
 import { ParametrosService } from 'src/app/servicios/parametros.service';
@@ -11,10 +12,13 @@ import { ParametrosService } from 'src/app/servicios/parametros.service';
 })
 export class ListarInmueblesComponent {
   listaRegistros: InmuebleModel[] = [];
+  pag = 1;
+  total = 0;
+  registrosPorPagina = ConfiguracionPaginacion.registrosPorPagina;
   constructor(
     private router: Router,
     private listar: ListarInmueblesService,
-    private servicioParametros: ParametrosService
+    private servicio: ListarInmueblesService
   ) {}
 
   getInmuebles() {
@@ -22,15 +26,17 @@ export class ListarInmueblesComponent {
   }
 
   ngOnInit() {
-    this.servicioParametros.listarRegistros().subscribe({
+    this.ListarRegistros()
+  }
+
+  ListarRegistros(){
+    this.servicio.listarRegistrosPaginados(this.pag).subscribe({
       next: (datos) => {
-        this.listaRegistros = datos;
+        this.listaRegistros = datos.registros !== undefined ? datos.registros : [];
       },
       error: (err) => {
         alert('error leyendo la informacion');
       },
     });
   }
-
-  
 }

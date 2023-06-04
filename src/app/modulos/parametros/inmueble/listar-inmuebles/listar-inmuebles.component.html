@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let r of listaRegistros">
+    <tr *ngFor="let r of listaRegistros | paginate : {itemsPerPage: registrosPorPagina,currentPage: pag, totalItems: 0}">
       <td>{{ r.name }}</td>
       <td>{{ r.precioVenta }}</td>
       <td>{{ r.precioAlquiler }}</td>
@@ -35,18 +35,18 @@
         >
       </td>
     </tr>
-    <!--
-      <tr> 
-        <td colspan="5">
-          <pagination-controls
-                      (pageChange)="pag = $event; ListarRegistros()"
-                      previousLabel="Anterior"
-                      nextLabel="Siguiente"
-                      screenReaderPaginationLabel="Navegación"
-                      screenReaderPageLabel="Página"
-                      screenReaderCurrentLabel="Página Actual">
-          </pagination-controls>
-        </td>
-        -->
+    <tr>
+      <td colspan="5">
+        <pagination-controls
+          (pageChange)="pag = $event; ListarRegistros()"
+          previousLabel="Anterior"
+          nextLabel="Siguiente"
+          screenReaderPaginationLabel="Navegación"
+          screenReaderPageLabel="Página"
+          screenReaderCurrentLabel="Página Actual"
+        >
+        </pagination-controls>
+      </td>
+    </tr>
   </tbody>
 </table>

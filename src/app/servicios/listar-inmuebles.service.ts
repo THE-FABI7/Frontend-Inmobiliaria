@@ -4,6 +4,7 @@ import { configuracionRutasBackend } from '../config/configuracion.rutas.backend
 import { InmuebleModel } from '../modelos/inmueble.model';
 import { ConfiguracionPaginacion } from '../config/configuracion.paginacion';
 import { Observable } from 'rxjs';
+import { PaginadorInmuebleModel } from '../modelos/paginador.inmueble.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,21 @@ export class ListarInmueblesService {
 
   listarRegistros(): Observable<InmuebleModel[]> {
     return this.http.get<InmuebleModel[]>(
-      `${this.urlBase}producto?filter={"limit":${ConfiguracionPaginacion.registrosPorPagina}}`
+      `${this.urlBase}inmuebles?filter={"limit":${ConfiguracionPaginacion.registrosPorPagina}}`
+    );
+  }
+
+  // listarRegistrosPaginados(): Observable<InmuebleModel[]> {
+  //   return this.http.get<InmuebleModel[]>(
+  //     `${this.urlBase}producto?filter={"limit":${ConfiguracionPaginacion.registrosPorPagina}}`
+  //   );
+  // }
+
+  listarRegistrosPaginados(pag: number): Observable<PaginadorInmuebleModel> {
+    let limit = ConfiguracionPaginacion.registrosPorPagina;
+    let skip = (pag - 1) * limit;
+    return this.http.get<PaginadorInmuebleModel>(
+      `${this.urlBase}inmuebles-paginado?filter={"limit":${limit}, "skip":${skip}, "order":"id DESC"}`
     );
   }
 }
