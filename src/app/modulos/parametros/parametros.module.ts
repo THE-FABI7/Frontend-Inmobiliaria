@@ -10,6 +10,7 @@ import { CrearInmueblesComponent } from './inmueble/crear-inmuebles/crear-inmueb
 import { EditarInmueblesComponent } from './inmueble/editar-inmuebles/editar-inmuebles.component';
 import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
     EliminarInmuebleComponent,
     CrearClienteComponent,
   ],
-  imports: [CommonModule, ParametrosRoutingModule],
+  imports: [CommonModule, ParametrosRoutingModule,
+  NgxPaginationModule],
 })
 export class ParametrosModule {}

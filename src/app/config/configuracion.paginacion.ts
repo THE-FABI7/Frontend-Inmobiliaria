@@ -1,3 +1,3 @@
 export namespace ConfiguracionPaginacion {
-  export const registrosPorPagina: number = 8;
+  export const registrosPorPagina: number = 101;
 }
