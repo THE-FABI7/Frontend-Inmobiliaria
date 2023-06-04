@@ -272,4 +272,14 @@ export class SeguridadService {
     }
     return menu;
   }
+
+  obtenerTokenLS():string {
+    let ls = localStorage.getItem('datos-sesion');
+    if (ls) {
+      let usuario: usuarioValidadoModel = JSON.parse(ls);
+      return usuario.token!;
+    } else {
+      return '';
+    }
+  }
 }
