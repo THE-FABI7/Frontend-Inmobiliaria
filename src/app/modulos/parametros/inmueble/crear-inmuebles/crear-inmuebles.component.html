@@ -1,1 +1,143 @@
-<p>crear-inmuebles works!</p>
+<fieldset class="center container">
+  <legend>Creación de Productos</legend>
+  <div class="row">
+    <form class="col s12" [formGroup]="cargaArchivoFG">
+      <div class="row">
+        <div class="showImage center-align">
+          <img
+            *ngIf="!archivoCargado"
+            src="/assets/img/noCargado.png"
+            class="imagenInmueble"
+          />
+          <img
+            *ngIf="archivoCargado"
+            src="{{ BASE_URL }}ObtenerArchivo/1/{{ nombreArchivoCargado }}"
+            class="imagenInmueble"
+          />
+        </div>
+      </div>
+      <div class="file-field input-field row">
+        <div class="btn col s3">
+          <span>Seleccionar Archivo</span>
+          <input
+            (change)="CuandoSeleccionaArchivo($event)"
+            name="image"
+            type="file"
+          />
+        </div>
+        <div class="file-path-wrapper col s9">
+          <input class="file-path validate" type="text" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <input
+            type="button"
+            class="btn"
+            value="Subir Archivo"
+            (click)="CargarArchivo()"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <form [formGroup]="fGroup">
+      <div class="row">
+        <div class="input-field col s4">
+          <input
+            formControlName="nombre"
+            class="validate"
+            id="nombre"
+            type="text"
+          />
+          <label for="nombre" data-error="wrong" data-success="right"
+            >Nombre</label
+          >
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFgDatos['nombre'].errors &&
+              (obtenerFgDatos['nombre'].dirty ||
+                obtenerFgDatos['nombre'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio</strong>
+          </div>
+        </div>
+        <div class="input-field col s4">
+          <input formControlName="precioVenta" id="precioVenta" type="number" />
+          <label for="precioVenta">Precio de Venta</label>
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFgDatos['precioVenta'].errors &&
+              (obtenerFgDatos['precioVenta'].dirty ||
+                obtenerFgDatos['precioVenta'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio</strong>
+          </div>
+        </div>
+        <div class="input-field col s4">
+          <input
+            formControlName="precioAlquiler"
+            id="precioAlquiler"
+            type="number"
+          />
+          <label for="precioAlquiler">Precio Alquiler</label>
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFgDatos['precioAlquiler'].errors &&
+              (obtenerFgDatos['precioAlquiler'].dirty ||
+                obtenerFgDatos['precioAlquiler'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio</strong>
+          </div>
+        </div>
+
+        <div class="input-field col s4">
+          <label for="precioAlquiler">Estado(Disponible,Alquilado,Vendido)</label>
+            <input formControlName="estado" id="estado" type="text" />
+
+          <!-- <label for="estado">Estado</label>
+          
+          <input formControlName="estado" type="radio" id="estado1" name="estado" value="Disponible" />
+          <label for="estado1">Disponible</label>
+
+          <input formControlName="estado" type="radio" id="estado2" name="estado" value="Vendido" />
+          <label for="estado2">Vendido</label>
+
+          <input formControlName="estado" type="radio" id="estado3" name="estado" value="Alquilado" />
+          <label for="contact3">Alquilado</label> -->
+
+          <div
+            class="show-errors"
+            *ngIf="
+              obtenerFgDatos['estado'].errors &&
+              (obtenerFgDatos['estado'].dirty ||
+                obtenerFgDatos['estado'].touched)
+            "
+          >
+            <strong>Este campo es obligatorio</strong>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <a routerLink="/parametros/inmueble-listar" class="btn red"
+            >Cancelar</a
+          >&nbsp;
+          <button
+            (click)="GuardarRegistro()"
+            class="btn waves-effect waves-light"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</fieldset>

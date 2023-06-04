@@ -15,10 +15,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let r of listaRegistros | paginate : {itemsPerPage: registrosPorPagina,currentPage: pag, totalItems: 0}">
-      <td>{{ r.name }}</td>
+      <td>{{ r.nombre }}</td>
       <td>{{ r.precioVenta }}</td>
       <td>{{ r.precioAlquiler }}</td>
-      <td>{{ r.type }}</td>
+      <td>{{ r.estado }}</td>
       <td>
         <img src="{{ r.foto }}" class="imagenListadoRegistros" />
       </td>

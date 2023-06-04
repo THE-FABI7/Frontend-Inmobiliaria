@@ -1,10 +1,10 @@
 export class InmuebleModel {
   _id?: string;
-  name?: string;
+  nombre?: string;
   foto?: string;
   precioVenta?: number;
   precioAlquiler?: number;
-  type?: string;
+  estado?: string;
   asesorId?: string;
   solicitudId?: string;
   ciudadId?: string;

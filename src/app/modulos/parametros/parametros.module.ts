@@ -11,6 +11,7 @@ import { EditarInmueblesComponent } from './inmueble/editar-inmuebles/editar-inm
 import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar-inmueble.component';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EliminarInmuebleComponent,
     CrearClienteComponent,
   ],
-  imports: [CommonModule, ParametrosRoutingModule,
-  NgxPaginationModule],
+  imports: [
+    CommonModule,
+    ParametrosRoutingModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ParametrosModule {}
