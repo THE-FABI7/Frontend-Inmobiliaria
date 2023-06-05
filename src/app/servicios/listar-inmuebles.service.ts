@@ -55,11 +55,12 @@ export class ListarInmueblesService {
     );
   }
 
-  BuscarRegistro(id: number): Observable<InmuebleModel> {
+  BuscarRegistro(id: string): Observable<InmuebleModel> {
     return this.http.get<InmuebleModel>(`${this.urlBase}inmueble/${id}`);
   }
 
   EliminarRegistro(id: number): Observable<any> {
     return this.http.delete<any>(`${this.urlBase}inmueble/${id}`);
   }
+
 }
