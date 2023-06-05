@@ -59,8 +59,7 @@ export class ListarInmueblesService {
     return this.http.get<InmuebleModel>(`${this.urlBase}inmueble/${id}`);
   }
 
-  EliminarRegistro(id: number): Observable<any> {
+  EliminarRegistro(id: string): Observable<any> {
     return this.http.delete<any>(`${this.urlBase}inmueble/${id}`);
   }
-
 }
