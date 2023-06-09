@@ -20,5 +20,4 @@ export class InicioComponent {
       error: (err) => {},
     });
   }
-
 }
