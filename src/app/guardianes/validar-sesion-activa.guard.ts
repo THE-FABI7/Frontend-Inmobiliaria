@@ -18,6 +18,14 @@ export class ValidarSesionActivaGuard implements CanActivate {
     private router: Router
   ) {}
 
+  /**
+   * Determines if the user can activate the requested route. Checks if there is an active session
+   * and returns true if there is, otherwise redirects to the login page and returns false.
+   * @param {ActivatedRouteSnapshot} route - The route requested by the user.
+   * @param {RouterStateSnapshot} state - The current state of the router.
+   * @returns {Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree} - 
+   * Returns true if the user can activate the route, otherwise redirects to the login page and returns false.
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
