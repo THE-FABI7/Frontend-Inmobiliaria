@@ -38,6 +38,15 @@ export class SeguridadService {
     });
   }
 
+  /**
+   * Sends a message through the contact form on the website.
+   * @param {string} nombreCompleto - The full name of the person sending the message.
+   * @param {string} correo - The email address of the person sending the message.
+   * @param {string} celular - The phone number of the person sending the message.
+   * @param {string} tipoMensaje - The type of message being sent.
+   * @param {string} mensaje - The content of the message being sent.
+   * @returns An Observable of type contactoModel that represents the result of the HTTP POST request.
+   */
   EnviarMensaje(
     nombreCompleto: string,
     correo: string,
@@ -84,6 +93,10 @@ export class SeguridadService {
 
   /**
    * La función elimina los datos de usuario no válidos del almacenamiento local.
+   */
+  /**
+   * Removes the validated user data from local storage and resets the user behavior to default.
+   * @returns None
    */
   RemoverDatosUsuarioValidado() {
     let datosUsuario = localStorage.getItem('datos-usuario');
@@ -171,6 +184,11 @@ export class SeguridadService {
     );
   }
 
+  /**
+   * Sends a POST request to the server to recover the password for the given user.
+   * @param {string} usuario - The username or email of the user to recover the password for.
+   * @returns {Observable<usuarioModel>} An observable that resolves to the user model object.
+   */
   RecuperarClavePorUsuario(usuario: string): Observable<usuarioModel> {
     return this.http.post<usuarioModel>(`${this.urlBase}recuperar-clave`, {
       correo: usuario,
@@ -201,6 +219,10 @@ export class SeguridadService {
   datosUsuarioValidado = new BehaviorSubject<usuarioValidadoModel>(
     new usuarioValidadoModel()
   );
+  /**
+   * Returns an Observable that emits the validated user data.
+   * @returns {Observable<usuarioValidadoModel>} An Observable that emits the validated user data.
+   */
   ObtenerDatosSesion(): Observable<usuarioValidadoModel> {
     return this.datosUsuarioValidado.asObservable();
   }
@@ -208,6 +230,12 @@ export class SeguridadService {
   /**
    * Esta función verifica si hay datos de sesión almacenados en el almacenamiento local y actualiza el
    * comportamiento del usuario en consecuencia.
+   */
+  /**
+   * Validates the user session by checking if the session data is stored in local storage.
+   * If the session data is found, the user behavior is updated and the session data is returned.
+   * If the session data is not found, null is returned.
+   * @returns {usuarioValidadoModel | null} - The validated user session data or null if the session data is not found.
    */
   ValidaCionDeSesion(): usuarioValidadoModel | null {
     let ls = localStorage.getItem('datos-sesion');
@@ -232,6 +260,11 @@ export class SeguridadService {
     return this.datosUsuarioValidado.next(datos);
   }
 
+  /**
+   * Builds a lateral menu based on the given permissions.
+   * @param {permisosModel[]} permisos - An array of permission objects.
+   * @returns None
+   */
   ConstruirMenuLateral(permisos: permisosModel[]) {
     let menu: itemMenuModel[] = [];
     permisos.forEach((permiso) => {
@@ -273,6 +306,10 @@ export class SeguridadService {
     return menu;
   }
 
+  /**
+   * Retrieves the token from the local storage if it exists.
+   * @returns {string} The token string if it exists, otherwise an empty string.
+   */
   obtenerTokenLS():string {
     let ls = localStorage.getItem('datos-sesion');
     if (ls) {
